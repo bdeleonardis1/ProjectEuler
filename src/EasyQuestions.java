@@ -169,11 +169,12 @@ public class EasyQuestions
 	public static int sumSquareDiff(int cap)
 	{
 		int tot1 = 0, tot2 = 0;
+		
 		for(int i = 1; i <= cap; i++)
-			tot1 += Math.pow(i, 2);
-			
-		for(int i = 1; i <= cap; i++)
+		{
+			tot1 += i*i;
 			tot2 += i;
+		}
 		tot2 *= tot2;
 		
 		return tot2 - tot1;
