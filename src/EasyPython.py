@@ -1,34 +1,27 @@
-def largeProdinGrid(gr):
-    max = 0
+def large_prod_in_grid(grid):
+    maximum = 0
     for i in range(0, len(grid)):
         for j in range(0, len(grid[i])):
-            total = 0
             if j + 3 < len(grid[i]):
-                total += grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3]
-                if total > max:
-                    max = total
+                total = grid[i][j] * grid[i][j+1] * grid[i][j+2] * grid[i][j+3]
+                if total > maximum:
+                    maximum = total
 
-            total = 0
             if i + 3 < len(grid):
-                total += grid[i][j] * grid[i+1][j] * grid[i+2][j] * grid[i+3][j]
-                if total > max:
-                    max = total
+                total = grid[i][j] * grid[i+1][j] * grid[i+2][j] * grid[i+3][j]
+                if total > maximum:
+                    maximum = total
 
-            total = 0
-            if i + 3 < len(grid) and j + 3  < len(grid[i]):
-                total += grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3]
-                if total > max:
-                    max = total
+            if i + 3 < len(grid) and j + 3 < len(grid[i]):
+                total = grid[i][j] * grid[i+1][j+1] * grid[i+2][j+2] * grid[i+3][j+3]
+                if total > maximum:
+                    maximum = total
 
-            total = 0
-            if i + 3 < len(grid) and j - 3  > 0:
-                total += grid[i][j] * grid[i+1][j-1] * grid[i+2][j-2] * grid[i+3][j-3]
-                if total > max:
-                    max = total
-    return max
-
-
-
+            if i + 3 < len(grid) and j - 3 > 0:
+                total = grid[i][j] * grid[i+1][j-1] * grid[i+2][j-2] * grid[i+3][j-3]
+                if total > maximum:
+                    maximum = total
+    return maximum
 
 grid = []
 grid.append([8, 2, 22, 97, 38, 15, 00, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8])
@@ -51,4 +44,4 @@ grid.append([4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 6
 grid.append([20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16])
 grid.append([20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54])
 grid.append([1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48])
-print(largeProdinGrid(grid))
+print(large_prod_in_grid(grid))
