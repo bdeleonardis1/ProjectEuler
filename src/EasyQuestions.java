@@ -4,7 +4,7 @@ public class EasyQuestions
 	//Just a driver/tester
 	public static void main(String[] args)
 	{
-		System.out.println(smallestMultiple());
+		System.out.println(sumSquareDiff(100));
 	}
 
 	//-------------------------------------------------------
@@ -97,7 +97,7 @@ public class EasyQuestions
 	//------------------------------------------------------------------------------------
 	//Question 4
 	//A palindromic number reads the same both ways. The largest palindrome made from the 
-	//product of two 2-digit numbers is 9009 = 91 � 99.
+	//product of two 2-digit numbers is 9009 = 91 × 99.
 	//Find the largest palindrome made from the product of two 3-digit numbers.
 	//------------------------------------------------------------------------------------
 	public static int largePalindromeProduct()
@@ -153,5 +153,29 @@ public class EasyQuestions
 			
 			curr+=20;
 		}
+	}
+	
+	//-------------------------------------------------------------------
+	//Question 6
+	//The sum of the squares of the first ten natural numbers is,
+	//12 + 22 + ... + 102 = 385
+	//The square of the sum of the first ten natural numbers is,
+	//(1 + 2 + ... + 10)2 = 552 = 3025
+	//Hence the difference between the sum of the squares of the first
+	//ten natural numbers and the square of the sum is 3025 − 385 = 2640.
+	//Find the difference between the sum of the squares of the first one
+	//hundred natural numbers and the square of the sum.
+	//-------------------------------------------------------------------
+	public static int sumSquareDiff(int cap)
+	{
+		int tot1 = 0, tot2 = 0;
+		for(int i = 1; i <= cap; i++)
+			tot1 += Math.pow(i, 2);
+			
+		for(int i = 1; i <= cap; i++)
+			tot2 += i;
+		tot2 *= tot2;
+		
+		return tot2 - tot1;
 	}
 }
