@@ -4,7 +4,7 @@ public class EasyQuestions
 	//Just a driver/tester
 	public static void main(String[] args)
 	{
-		System.out.println(largePalindromeProduct());
+		System.out.println(smallestMultiple());
 	}
 
 	//-------------------------------------------------------
@@ -119,5 +119,39 @@ public class EasyQuestions
 			rev += str.charAt(c);
 		
 		return str.equals(rev);
+	}
+	
+	//-----------------------------------------------------
+	//Question 5
+	//2520 is the smallest number that can be divided by 
+	//each of the numbers from 1 to 10 without any remainder.
+	//What is the smallest positive number that is evenly 
+	//divisible by all of the numbers from 1 to 20?
+	//------------------------------------------------------
+	public static int smallestMultiple()
+	{
+		int[] checks = {20, 19, 18, 17, 16, 15, 14, 13, 12, 11};
+		
+		int curr = 2540;
+		while(true)
+		{
+			//System.out.println(curr);
+			boolean divisible = true;
+			for(int i = 0; i < checks.length; i++)
+			{
+				//System.out.println("iteration");
+				if(curr % checks[i] != 0)
+				{
+					divisible = false;
+					break;
+
+				}
+			}
+			
+			if(divisible)
+				return curr;
+			
+			curr+=20;
+		}
 	}
 }
