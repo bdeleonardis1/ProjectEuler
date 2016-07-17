@@ -1,3 +1,8 @@
+#Problems 11 - 20
+
+#------------
+#Problem 11
+#------------
 def large_prod_in_grid(grid):
     maximum = 0
     for i in range(0, len(grid)):
@@ -23,7 +28,23 @@ def large_prod_in_grid(grid):
                     maximum = total
     return maximum
 
-grid = []
+#-----------
+#Problem 12
+#-----------
+def high_div_triangular_num(divisors):
+    tot = 0
+    count = 1
+    while True:
+        tot += count
+        if len(num_factors(tot)) >= divisors:
+            return tot
+        count += 1
+
+#helper for problem 12
+def num_factors(num):
+    return set(x for tup in ([i, num//i] for i in range(1, int(num**0.5)+1) if num % i == 0) for x in tup)
+
+'''grid = []
 grid.append([8, 2, 22, 97, 38, 15, 00, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8])
 grid.append([49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0])
 grid.append([81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65])
@@ -44,4 +65,6 @@ grid.append([4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 6
 grid.append([20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16])
 grid.append([20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54])
 grid.append([1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48])
-print(large_prod_in_grid(grid))
+print(large_prod_in_grid(grid))'''
+
+print(high_div_triangular_num(500))
