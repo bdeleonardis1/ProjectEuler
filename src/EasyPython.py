@@ -1,5 +1,7 @@
 # Problems 11 - 20
 
+import math
+
 # ------------
 # Problem 11
 # ------------
@@ -245,4 +247,14 @@ def counting_sums():
                 num += 1
     return num
 
+#-----------
+#Problem 20
+#-----------
+def factorial_digit_sum(num):
+    num = str(math.factorial(num))
+    tot = 0
+    for n in num:
+        tot += int(n)
+    return tot
 
+print(factorial_digit_sum(100))
