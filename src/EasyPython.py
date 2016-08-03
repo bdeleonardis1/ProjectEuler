@@ -257,4 +257,18 @@ def factorial_digit_sum(num):
         tot += int(n)
     return tot
 
-print(factorial_digit_sum(100))
+#random method to generate subsets
+def subsets(nums):
+    if nums is None: return None
+    subset = [[]]
+    next = []
+    for n in nums:
+        for s in subset:
+            next.append(s + [n])
+
+        subset += next
+        next = []
+    return subset
+
+print(subsets([2, 4, 5, 6]))
+
