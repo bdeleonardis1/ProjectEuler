@@ -8,12 +8,7 @@ public class TwentyOnetoThirty
 
 	public static void main(String[] args) throws Exception 
 	{
-		Scanner scan = new Scanner(new File("names.txt"));
-		String[] names = scan.next().split(",");
-		int[] nums = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-		lexiPermutations(nums);
-		for(int n : nums)
-			System.out.print(n);
+		System.out.println(recipCycles());
 	}
 	
 	//------------
@@ -170,9 +165,32 @@ public class TwentyOnetoThirty
 	//--------------
 	public static int recipCycles()
 	{
-		/*BigDecimal dec = new BigDecimal("");
-		System.out.println(dec); */
-		return 0;
+		int d = 0, len = 0;
+		
+		for(int i = 1000; i > 1; i--)
+		{
+			if(len >= i)
+				break;
+			
+			int remainders[] = new int[i];
+			int val = 1, poss = 0;
+			
+			while(remainders[val] == 0 && val != 0)
+			{
+				remainders[val] = poss;
+				val *= 10;
+				val %= i;
+				poss++;
+			}
+			
+			if(poss - remainders[val] > len)
+			{
+				d = i;
+				len = poss - remainders[val];
+			}
+		}
+		
+		return d;
 	}
 	
 	
