@@ -8,7 +8,7 @@ public class TwentyOnetoThirty
 
 	public static void main(String[] args) throws Exception 
 	{
-		System.out.println(recipCycles());
+		System.out.println(digitFifthPowers());
 	}
 	
 	//------------
@@ -192,8 +192,175 @@ public class TwentyOnetoThirty
 		
 		return d;
 	}
+	//------------------
+	//Problem 27
+	//------------------
+	public static int quadraticPrimes()
+	{
+		//n2 + na + b		abs(a) < 1000    abs(b) <= 1000
+		int longest = 0, product = 0;
+		for(int a = 1; a < 1000; a++)
+		{
+			for(int b = 2; b <= 1000; b++)
+			{
+				if(isPrime(b))
+				{
+					int curr = primeLength(a, b);
+					if(curr > longest)
+					{
+						longest = curr;
+						product = a * b;
+					}
+					
+					curr = primeLength(-a, b);
+					if(curr > longest)
+					{
+						longest = curr;
+						product = -a * b;
+					}
+					
+					curr = primeLength(a, -b);
+					if(curr > longest)
+					{
+						longest = curr;
+						product = a * -b;
+					}
+					
+					curr = primeLength(-a, -b);
+					if(curr > longest)
+					{
+						longest = curr;
+						product = -a * -b;
+					}
+				}
+			}
+		}
+		
+		return product;
+	}
 	
+	//Helper for problem 27
+	public static int primeLength(int a, int b)
+	{
+		int curr = 0;
+		for(int n = 0; isPrime(Math.abs(n*n + n * a + b)); n++)
+			curr = n;
+		return curr;
+	}
 	
+	//Helper for problem 27
+	public static boolean isPrime(long num)
+	{
+		if(num == 2 || num == 3)
+			return true;
+		else if(num % 2 == 0 || num % 3 == 0)
+			return false;
+
+		long i = 5;
+		long w = 2;
+
+		while (i * i <= num)
+		{
+			if(num % i == 0)
+				return false;
+
+			i += w;
+			w = 6 - w;
+		}
+
+		return true;
+	}
+	
+	//-----------
+	//Problem 28
+	//-----------
+	public static int numberSpiralDiagonals()
+	{
+		int[][] grid = new int[1001][1001];
+		
+		int centerX= grid[0].length / 2, centerY = grid.length / 2;
+		grid[centerX][centerY] = 1;
+		int currX = centerX + 1, currY = centerY;
+		int val = 2;
+		
+		for(int dist = 1; currX < grid[0].length; dist++)
+		{
+			//down
+			for(; Math.abs(currY - centerY) <= dist; currY++, val++)
+				grid[currY][currX] = val;
+			
+			//left
+			for(currY--, currX--; Math.abs(currX - centerX) <= dist; currX--, val++)
+				grid[currY][currX] = val;
+			
+			//up
+			for(currX++, currY--; Math.abs(currY - centerY) <= dist; currY--, val++)
+				grid[currY][currX] = val;
+			
+			//right
+			for(currY++, currX++; Math.abs(currX - centerX) <= dist; currX++, val++)
+				grid[currY][currX] = val;			
+		}
+		
+		int diagonals = 0;
+		for(int r = 0, c = 0; r < grid.length && c < grid[0].length; r++, c++)
+			diagonals += (grid[r][c] + grid[r][grid[0].length - 1 - c]);
+		
+		return --diagonals;
+		
+	}
+	
+	//Helper for 28
+	public static void printGrid(int[][] grid)
+	{	
+		for(int r = 0; r < grid.length; r++)
+		{
+			for(int c = 0; c < grid.length; c++)
+				System.out.print(grid[r][c]);
+			System.out.println();
+		}
+	}
+	
+	//------------
+	//Problem 29
+	//------------
+	public static int distinctPowers()
+	{
+		HashSet<String> set = new HashSet<String>();
+		for(int a = 2; a <= 100; a++)
+			for(int b = 2; b <= 100; b++)
+			{
+				BigInteger curr = new BigInteger(a + "");
+				curr = curr.pow(b);
+				set.add(curr + "");
+				
+			}
+		
+		return set.size();
+	}
+	
+	//-----------
+	//Problem 30
+	//-----------
+	public static int digitFifthPowers()
+	{
+		int tot = 0;
+		for(int i = 2; i < 999999; i++)
+		{
+			String digits = i + "";
+			int sum = 0;
+			for(int j = 0; j < digits.length(); j++)
+				sum += Math.pow(Integer.parseInt(digits.charAt(j) + ""), 5);
+			
+			if(sum == i)
+			{
+				System.out.println(i);
+				tot += i;
+			}
+		}
+		
+		return tot;
+	}
 	
 	//Random method to generate all the subsets
 	public static void subsets(Object[] items)
