@@ -8,7 +8,8 @@ public class TwentyOnetoThirty
 
 	public static void main(String[] args) throws Exception 
 	{
-		System.out.println(digitFifthPowers());
+		Integer[] nums = {9, 8, 7, 6, 5, 4, 3, 2, 1};
+		System.out.println(lexiPermutations(nums));
 	}
 	
 	//------------
@@ -101,12 +102,12 @@ public class TwentyOnetoThirty
 	//------------
 	//Problem 24
 	//------------
-	public static int[] lexiPermutations(int[] nums)
+	public static Integer[] lexiPermutations(Integer[] nums)
 	{
-		for(int i = 1; i < 1000000; i++)
+		for(int i = 1; i < 10; i++)
 		{
 			int j = nums.length - 1;
-			while(j > 0 && nums[j] <= nums[j - 1])
+			while(j > 0 && nums[j] >= nums[j - 1])
 				j--;
 			
 			if(j == 0)
@@ -115,7 +116,7 @@ public class TwentyOnetoThirty
 			int pivot = j - 1;
 			int k = nums.length - 1;
 			
-			while(nums[k] <= nums[pivot])
+			while(nums[k] >= nums[pivot])
 				k--;
 			
 			int temp = nums[pivot];
@@ -132,6 +133,7 @@ public class TwentyOnetoThirty
 				j++;
 				l--;
 			}
+			System.out.println(Arrays.deepToString(nums));
 		}
 		return nums;
 	}
