@@ -1,6 +1,14 @@
 import math
 
 #------------
+#Problem 31
+#------------
+def coin_sums():
+
+
+
+
+#------------
 #Problem 32
 #------------
 def pandigital_product():
@@ -258,8 +266,6 @@ def champ_constant():
         curr *= 10
 
     return tot
-
-print(champ_constant())
 
 #Random method to generate all of the factors of a string
 def factors(n):
